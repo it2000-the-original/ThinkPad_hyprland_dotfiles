@@ -1,0 +1,232 @@
+// -*- mode: jsonc -*-
+{
+  "layer":    "top", // Waybar at top layer
+  "position": "top", // Waybar position (top|bottom|left|right)
+
+  "height":  30,     // Waybar height (to be removed for auto height)
+  "spacing": 4,      // Gaps between modules (4px)
+
+  // Margins equal to the hyprland's ones
+
+  "margin-left":  9,
+  "margin-right": 9,
+  "margin-top":   9,
+
+  // Order of the modules
+
+  "modules-left": [
+
+    "hyprland/workspaces",
+    "hyprland/window"
+  ],
+
+  "modules-center": [
+
+    "clock"
+  ],
+
+  "modules-right": [
+
+    "tray",
+    "pulseaudio#output",
+    "pulseaudio#input",
+    "backlight",
+    "battery",
+    "power-profiles-daemon",
+    "custom/power"
+  ],
+
+  "hyprland/window": {
+
+    // max size of the window title module
+
+    "max-length": 60
+  },
+
+  "hyprland/workspaces": {
+
+    "all-outputs": true,
+    "format": "{icon}",
+
+    // Switch workspace scrolling with mouse
+
+    "on-scroll-up":   "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1",
+
+    "format-icons": {
+
+      "1": "", // Terminals workspace
+      "2": "", // Browser workspace
+      "3": "", // Coding workspace
+      "4": "", // Music player workspace
+      "5": "󰼓",
+      "6": "󰼔",
+      "7": "󰼕",
+      "8": "󰼖",
+      "9": "󰼗",
+      "10": "󰼎",
+
+      "focused": "",
+      "default": ""
+    }
+  },
+
+  // Size and spacing of the tray icons
+
+  "tray": {
+
+    "spacing": 16,
+    "icon-size": 15
+  },
+
+  "clock": {
+
+    "format": "{:%H:%M}  ",
+    "format-alt": "{:%Y/%m/%d}  ",
+
+    "tooltip-format": "<big>{:%Y %B %d}</big>\n<tt><small>{calendar}</small></tt>"
+  },
+
+  "backlight": {
+
+    "tooltip": false,
+
+    "format": "{percent}% {icon}",
+
+    "format-icons": ["󰛩", "󱩎", "󱩏", "󱩐", "󱩑", "󱩒", "󱩓", "󱩔", "󱩕", "󱩖", "󰛨"],
+
+    // Scroll up or down to modify brightness
+
+    "on-scroll-up":   "~/.config/hypr/scripts/brightness.sh -i 1",
+    "on-scroll-down": "~/.config/hypr/scripts/brightness.sh -d 1"
+  },
+
+  // Show battery status and remaning time
+
+  "battery": {
+
+    "full-at": 99,
+    "interval": 10,
+
+    "states": {
+
+      "good": 75,
+      "warning": 30,
+      "critical": 20
+    },
+
+    "format":          "{capacity}% {icon}",
+    "format-charging": "{capacity}% 󰂄",
+    "format-plugged":  "{capacity}% 󰚥",
+    "format-alt":      "{time} {icon}",
+
+    "tooltip-format-discharging": "  Remaning Time: {time}",
+    "tooltip-format-charging":    "󰂄  Remaning Time:  ",
+    "tooltip-format-plugged":     "󰚥  Remaning Time:  ",
+
+    "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+  },
+
+  // Click to change power profile
+
+  "power-profiles-daemon": {
+
+    "tooltip": true,
+
+    "format": "{icon}",
+
+    "format-icons": {
+
+      "default":     "",
+      "balanced":    "",
+      "performance": "",
+      "power-saver": ""
+    },
+
+    "tooltip-format": "  Profile: {profile}\n  Driver:  {driver}"
+  },
+
+  // Show network status
+
+  "network": {
+
+    "format-wifi":         "{essid} {icon}",
+    "format-alt":          "{ifname}: {ipaddr}/{cidr} {icon}",
+    "format-linked":       "{ifname} (No IP)",
+    "format-ethernet":     "󰈀",
+    "format-disconnected": "󱥕",
+
+    "tooltip-format": "  {ifname} via {gwaddr}",
+
+    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+
+    // Right click to open a terminal with a list of avaiable networks
+
+    "on-click-right": "kitty -e nmtui"
+  },
+
+  // Show bluetooth status
+
+  "bluetooth": {
+
+    "format": "󰂯",
+    "format-off": "󰂲",
+    "format-disabled": "󰂲",
+    "format-connected": "{device_alias} 󰂱",
+
+    // Click to enable/disable bluetooth, right click to open blueman
+
+    "on-click": "~/.config/hypr/scripts/bluetooth.sh",
+    "on-click-right": "blueman-manager"
+  },
+
+  // Manage system volume
+
+  "pulseaudio#output": {
+
+    "format":       "{volume}% {icon}",
+    "format-muted": "{volume}%  ",
+
+    "format-icons": {
+
+      "headphone": "",
+      "default": ["", "", ""]
+    },
+
+    // Scroll and clicking to change volume or muting input
+
+    "on-click":       "pactl set-sink-mute   @DEFAULT_SINK@ toggle",
+    "on-scroll-up":   "~/.config/hypr/scripts/volume.sh -i 1",
+    "on-scroll-down": "~/.config/hypr/scripts/volume.sh -d 1",
+    "on-click-right": "pavucontrol"
+  },
+
+  // Manage volume of the source
+
+  "pulseaudio#input": {
+
+    "tooltip": false,
+
+    "format":              "{format_source}",
+    "format-source":       "{volume}% ",
+    "format-source-muted": "{volume}%  ",
+
+    // Scroll and clicking to change volume or muting it
+
+    "on-click":	      "pactl set-source-mute   @DEFAULT_SOURCE@ toggle",
+    "on-scroll-up":   "~/.config/hypr/scripts/source_volume.sh -i 1",
+    "on-scroll-down": "~/.config/hypr/scripts/source_volume.sh -d 1",
+    "on-click-right": "pavucontrol"
+  },
+
+  // Power button
+
+  /*"custom/power": {
+
+    "tooltip": false,
+
+    "format": "",
+
+    "on-click": "wlogout --protocol layer-shell"
+  }*/
+}

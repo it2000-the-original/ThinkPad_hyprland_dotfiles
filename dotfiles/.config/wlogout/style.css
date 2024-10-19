@@ -1,0 +1,118 @@
+@define-color background-color #0f0f0f;
+@define-color active-color     #eeeeee;
+@define-color inactive-color   #909090;
+@define-color text-color       #e1e1e1;
+@define-color button-color     #151515;
+
+* {
+	
+	font-family: "Roboto";
+	font-size: 18px;
+	box-shadow: none;
+}
+
+window {
+
+	background-color: @background-color;
+	background-image: image(url("../../.local/share/backgrounds/thinkpad_wallpaper.png"));
+  background-size: 100%;
+}
+
+/* Buttons configuration */
+
+button {
+
+	border: 3px solid @incative-color;
+	border-radius: 5px;
+
+	color: @inactive-color;
+	text-decoration-color: @inactive-color;
+
+	background-color: @background-color;
+	background-repeat: no-repeat;
+	background-position: center 35%;
+	background-size: 25%;
+
+	margin: 20px;
+}
+
+button:focus {
+
+	background-color: @button-color;
+	border-color: @active-color;
+	color: @text-color;
+
+	font-weight: bold;
+}
+
+button:hover {
+
+	background-color: @button-color;
+	border-color: @active-color;
+}
+
+/* Icons configuration */
+
+#lock {
+
+	background-image: image(url("../../.config/wlogout/icons/lock.png"));
+}
+
+#logout {
+
+	background-image: image(url("../../.config/wlogout/icons/logout.png"));
+	background-size: 24%;
+}
+
+#suspend {
+
+	background-image: image(url("../../.config/wlogout/icons/suspend.png"));
+}
+
+#hibernate {
+
+	background-image: image(url("../../.config/wlogout/icons/hibernate.png"));
+	background-size: 24%;
+}
+
+#shutdown {
+
+	background-image: image(url("../../.config/wlogout/icons/shutdown.png"));
+}
+
+#reboot {
+
+	background-image: image(url("../../.config/wlogout/icons/reboot.png"));
+}
+
+/* Active state */
+
+#lock:focus {
+
+	background-image: image(url("../../.config/wlogout/icons/lock-highlight.png"));
+}
+
+#logout:focus {
+
+	background-image: image(url("../../.config/wlogout/icons/logout-highlight.png"));
+}
+
+#suspend:focus {
+
+	background-image: image(url("../../.config/wlogout/icons/suspend-highlight.png"));
+}
+
+#hibernate:focus {
+
+	background-image: image(url("../../.config/wlogout/icons/hibernate-highlight.png"));
+}
+
+#shutdown:focus {
+
+	background-image: image(url("../../.config/wlogout/icons/shutdown-highlight.png"));
+}
+
+#reboot:focus {
+
+	background-image: image(url("../../.config/wlogout/icons/reboot-highlight.png"));
+}
