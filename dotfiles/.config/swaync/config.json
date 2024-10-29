@@ -92,11 +92,7 @@
 		"backlight": {
 
 			"label": "  ",
-
-      // Remember to change this if you
-      // aren't using an intel gpu
 			"device": "intel_backlight",
-
 			"min": 1
 		},
 
