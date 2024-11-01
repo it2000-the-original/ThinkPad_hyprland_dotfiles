@@ -42,6 +42,44 @@ The installation script will automatically install:
 - [Trueline](https://github.com/petobens/trueline.git)
 ## Installation
 To install the dotfiles you simply need to launch the installation script from any folder: `./install.sh` and, if you want to uninstall the dotfiles and themes, you can launch the installation script with the `-u` or `--uninstall` argument: `./install.sh --uninstall`
+## Shortcuts
+**The modifier key is "SUPER" (The Windows key) and i will call it "MOD"**
+Remember that this rice uses vim-based shortcuts
+### Base windows actions
+- **MOD-Q**: kill active window
+- **MOD-V**: toggle floating mod
+- **MOD-P**: toggle pseudo-tiling
+- **MOD-T**: toggle split
+- **MOD-W**: toggle fullscreen mode
+### Utilities launch
+- **MOD-Return**: launch kitty
+- **MOD-M**: launch rofi (to show drun)
+- **MOD-R**: launch rofi (to show run)
+- **MOD-F**: launch nemo
+- **MOD-N**: launch swaync-client
+- **MOD-E**: launch wlogout
+### Move focus
+- **MOD-H**: move focus, left
+- **MOD-L**: move focus, right
+- **MOD-K**: move focus, up
+- **MOD-J**: move focus, down
+### Base workspaces actions
+- **MOD-<workspace_number>**: go to workspace <workspace_number>
+- **MOD-Shift-<workspace_number>**: move active window to workspace <workspace_number>
+- **MOD-S**: toggle special workspace
+- **MOD-Shift-S**: move active window to the special workspace
+- **MOD-Alt-Right**: move to next workspace
+- **MOD-Alt-Left**: move to previous workspace
+- **MOD-Z**: swaps the active workspaces between two monitors
+### Moving and resizing
+- **MOD-Alt-H**: move window, left
+- **MOD-Alt-L**: move window, right
+- **MOD-Alt-K**: move window, up
+- **MOD-Alt-J**: move window, down
+- **MOD-Shift-H**: decrease size of the window, horizontally
+- **MOD-Shift-L**: increase size of the window, horizontally
+- **MOD-Shift-K**: decrease size of the window, vertically
+- **MOD-Shift-J**: increase size of the window, vertically
 ## Screenshots
 ![](screenshots/screenshot2.png)
 ![](screenshots/screenshot3.png)
